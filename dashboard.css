@@ -63,12 +63,14 @@ body {
     border: 3px solid var(--color-white);
     overflow: hidden;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
-    transition: 0.3s ease;
+    transition: 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    animation: photoPopIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards, gentleFloat 5s ease-in-out 0.8s infinite;
 }
 
 .photo-frame:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.85);
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.85), 0 0 20px rgba(255, 255, 255, 0.25);
+    animation-play-state: paused;
 }
 
 .profile-img {
@@ -93,6 +95,7 @@ body {
     border-radius: 12px;
     padding: 30px 24px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    animation: fadeInUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.18s backwards;
 }
 
 .greeting-title {
@@ -109,6 +112,8 @@ body {
     border-bottom: 2px solid var(--color-cream);
     font-weight: 800;
     text-shadow: 0 0 10px black;
+    display: inline-block;
+    animation: nameShimmer 3s ease-in-out infinite;
 }
 
 .owner-name {
@@ -144,8 +149,21 @@ body {
     border-radius: 8px;
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
     cursor: pointer;
-    transition: 0.2s ease;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
     overflow: hidden;
+    position: relative;
+}
+
+#cardAboutMe {
+    animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.32s backwards;
+}
+
+#cardSisfo {
+    animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.44s backwards;
+}
+
+#cardAspirasi {
+    animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.56s backwards;
 }
 
 .choice-link {
@@ -171,7 +189,7 @@ body {
     color: black;
     text-shadow: none;
     min-width: 32px;
-    transition: 0.2s ease;
+    transition: transform 0.25s ease, color 0.25s ease;
 }
 
 .choice-title {
@@ -180,25 +198,28 @@ body {
     color: var(--color-navy);
     text-shadow: none;
     margin: 0;
-    transition: 0.2s ease;
+    transition: transform 0.25s ease, color 0.25s ease;
+    flex-grow: 1;
 }
 
 /* Hover ala referensi (.tombol-area button:hover) */
 .choice-card:hover {
     background-color: var(--color-hover);
     border-color: var(--color-hover);
-    transform: translateY(-3px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+    transform: translateY(-4px) scale(1.01);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.65), 0 0 15px rgba(255, 255, 255, 0.15);
 }
 
 .choice-card:hover .choice-title {
     color: var(--color-white);
     text-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+    transform: translateX(4px);
 }
 
 .choice-card:hover .choice-number {
     color: white;
     text-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+    transform: scale(1.1);
 }
 
 @media (max-width: 600px) {

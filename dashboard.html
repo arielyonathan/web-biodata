@@ -5,7 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Biodata Diri - Selamat Datang</title>
+    <link rel="stylesheet" href="transitions.css">
     <link rel="stylesheet" href="dashboard.css">
+    <script src="transitions.js" defer></script>
 </head>
 
 <body class="dashboard-body">
@@ -86,9 +88,10 @@
     -->
     <script>
         const urlParams = new URLSearchParams(window.location.search);
-        const namaInput = urlParams.get('nama');
+        const namaInput = urlParams.get('nama') || sessionStorage.getItem('namaPengunjung');
         if (namaInput && namaInput.trim() !== '') {
             document.getElementById('namaPengunjung').textContent = namaInput;
+            sessionStorage.setItem('namaPengunjung', namaInput.trim());
         }
     </script>
 

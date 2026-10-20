@@ -60,8 +60,9 @@ a {
     border-radius: 6px;
     text-shadow: none;
     cursor: pointer;
-    transition: 0.2s ease;
+    transition: 0.25s ease;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    animation: fadeInLeft 0.5s cubic-bezier(0.16, 1, 0.3, 1) backwards;
 }
 
 .btn-back:hover {
@@ -70,6 +71,7 @@ a {
     border-color: var(--color-hover);
     text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
     transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6);
 }
 
 /* ================= CONTAINER UTAMA ================= */
@@ -101,6 +103,7 @@ a {
     margin-bottom: 14px;
     letter-spacing: 0.05em;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    animation: scaleIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.1s backwards;
 }
 
 .page-title {
@@ -110,6 +113,7 @@ a {
     color: var(--color-white);
     text-shadow: 0 0 10px black;
     line-height: 1.25;
+    animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.15s backwards;
 }
 
 .page-subtitle {
@@ -119,6 +123,7 @@ a {
     text-shadow: 0 0 8px black;
     max-width: 600px;
     margin: 0 auto;
+    animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.22s backwards;
 }
 
 /* ================= SECTION UMUM ================= */
@@ -140,6 +145,7 @@ a {
     border-radius: 12px;
     padding: 28px 24px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.28s backwards;
 }
 
 .milestones-list {
@@ -154,7 +160,19 @@ a {
     border-radius: 8px;
     padding: 20px 20px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    transition: 0.2s ease;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.milestones-list .milestone-card:nth-child(1) {
+    animation: fadeInUp 0.55s cubic-bezier(0.16, 1, 0.3, 1) 0.32s backwards;
+}
+
+.milestones-list .milestone-card:nth-child(2) {
+    animation: fadeInUp 0.55s cubic-bezier(0.16, 1, 0.3, 1) 0.42s backwards;
+}
+
+.milestones-list .milestone-card:nth-child(3) {
+    animation: fadeInUp 0.55s cubic-bezier(0.16, 1, 0.3, 1) 0.52s backwards;
 }
 
 .milestone-badge {
@@ -234,6 +252,7 @@ a {
     border-radius: 12px;
     padding: 28px 24px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.48s backwards;
 }
 
 .skills-grid {
@@ -248,7 +267,7 @@ a {
     border-radius: 8px;
     padding: 18px 16px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    transition: 0.2s ease;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .category-title {
@@ -287,8 +306,8 @@ a {
 .skill-category-card:hover {
     background-color: Grey;
     border-color: var(--color-hover);
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    transform: translateY(-4px) scale(1.01);
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.6);
 }
 
 .skill-category-card:hover .category-title {
@@ -308,6 +327,7 @@ a {
 /* ================= KOMITMEN PRIBADI ================= */
 .commitment-section {
     width: 100%;
+    animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.56s backwards;
 }
 
 .commitment-box {

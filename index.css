@@ -52,10 +52,12 @@ body {
     border-radius: 12px;
     padding: 45px 36px;
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+    animation: scaleIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .login-header {
     margin-bottom: 35px;
+    animation: fadeInDown 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.1s backwards;
 }
 
 h1,
@@ -130,8 +132,17 @@ h2,
     box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.45);
 }
 
+.form-group:nth-of-type(1) {
+    animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.2s backwards;
+}
+
+.form-group:nth-of-type(2) {
+    animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.3s backwards;
+}
+
 .form-action {
     margin-top: 20px;
+    animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.4s backwards;
 }
 
 .btn-submit {
@@ -146,8 +157,10 @@ h2,
     border-radius: 6px;
     cursor: pointer;
     text-shadow: none;
-    transition: 0.2s ease;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    position: relative;
+    overflow: hidden;
 }
 
 .btn-submit:hover {
@@ -156,17 +169,18 @@ h2,
     border-color: var(--color-hover);
     text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
     transform: translateY(-2px);
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6);
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.6), 0 0 15px rgba(255, 255, 255, 0.2);
 }
 
 .btn-submit:active {
-    transform: translateY(0);
+    transform: translateY(0) scale(0.98);
 }
 
 .login-footer {
     margin-top: 30px;
     padding-top: 18px;
     border-top: 1px solid rgba(255, 255, 255, 0.15);
+    animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.5s backwards;
 }
 
 .footer-note {
