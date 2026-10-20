@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biodata Diri - Selamat Datang</title>
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+
+<body class="dashboard-body">
+
+    <main class="profile-container">
+
+        <!-- ================= 1. FOTO PROFIL (PORTRAIT 9:16) ================= -->
+        <section class="profile-photo-wrapper">
+            <!-- 
+                Catatan: 
+                - Ganti "foto-profil.jpg" dengan nama/path file fotomu.
+                - Ukuran rasio 9:16 (portrait) bisa kamu atur di CSS nanti (misal: aspect-ratio: 9/16; object-fit: cover;)
+            -->
+            <div class="photo-frame">
+                <img src="foto\Halo.jpeg" alt="Foto Profil Saya" class="profile-img" id="profileImage">
+            </div>
+        </section>
+
+
+        <!-- ================= 2. KATA SAMBUTAN ================= -->
+        <section class="greeting-section">
+            <h1 class="greeting-title">
+                Halooo <span id="namaPengunjung" class="visitor-name">[Nama Pengunjung]</span>, salam kenal yaa,
+                Aku <span class="owner-name">Ariel Yonathan</span>!
+            </h1>
+            <p class="greeting-subtitle">
+                Makasih udah mampir ges! Mau kenal aku lebih dalam? coba pilihan di bawah yaaa:
+            </p>
+        </section>
+
+
+        <!-- ================= 3. STRUKTUR 3 PILIHAN ================= -->
+        <section class="choices-section">
+            <div class="choices-grid">
+
+                <!-- Pilihan 1: About Me (Biodata Lengkap) -->
+                <!-- Kamu bisa arahkan href ke file html terpisah (misal: about.html) atau biarkan berupa card -->
+                <article class="choice-card" id="cardAboutMe">
+                    <a href="about.html" class="choice-link">
+                        <div class="choice-content">
+                            <span class="choice-number">01</span>
+                            <h2 class="choice-title">About Me</h2>
+                        </div>
+                    </a>
+                </article>
+
+                <!-- Pilihan 2: Kenapa Memilih Sistem Informasi -->
+                <!-- Kamu bisa arahkan href ke file html terpisah (misal: sisfo.html) -->
+                <article class="choice-card" id="cardSisfo">
+                    <a href="sisfo.html" class="choice-link">
+                        <div class="choice-content">
+                            <span class="choice-number">02</span>
+                            <h2 class="choice-title">Kenapa memilih Sistem Informasi</h2>
+                        </div>
+                    </a>
+                </article>
+
+                <!-- Pilihan 3: Tujuan dan Aspirasi -->
+                <!-- Kamu bisa arahkan href ke file html terpisah (misal: aspirasi.html) -->
+                <article class="choice-card" id="cardAspirasi">
+                    <a href="aspirasi.html" class="choice-link">
+                        <div class="choice-content">
+                            <span class="choice-number">03</span>
+                            <h2 class="choice-title">Tujuan &amp; Aspirasi</h2>
+                        </div>
+                    </a>
+                </article>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 
+        Script opsional & praktis:
+        Otomatis mengambil data 'nama' yang diinput dari index.html 
+        lalu menampilkannya langsung di bagian kata sambutan di atas.
+    -->
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const namaInput = urlParams.get('nama');
+        if (namaInput && namaInput.trim() !== '') {
+            document.getElementById('namaPengunjung').textContent = namaInput;
+        }
+    </script>
+
+</body>
+
+</html>

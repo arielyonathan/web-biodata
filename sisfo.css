@@ -1,0 +1,318 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&display=swap');
+
+:root {
+    --bg-image: url('https://img.magnific.com/free-photo/abstract-grayscale-layered-wavy-shapes_779267-3587.jpg?semt=ais_hybrid&w=740&q=80');
+    --color-navy: #172b3a;
+    --color-cream: #fffaf5;
+    --color-white: #ffffff;
+    --color-hover: #374151;
+    --border-gray: #aaaaaa;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+
+    background-image: var(--bg-image);
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    color: var(--color-white);
+    text-shadow: 0 0 10px black;
+    line-height: 1.6;
+
+    display: flex;
+    flex-direction: column;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* ================= NAVIGASI ATAS ================= */
+.page-header {
+    width: 90%;
+    max-width: 720px;
+    margin: 25px auto 0;
+}
+
+.btn-back {
+    display: inline-block;
+    padding: 8px 18px;
+    font-size: 15px;
+    font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
+    color: black;
+    background-color: var(--color-white);
+    border: 2px solid var(--color-navy);
+    border-radius: 6px;
+    text-shadow: none;
+    cursor: pointer;
+    transition: 0.2s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.btn-back:hover {
+    background-color: grey;
+    color: var(--color-white);
+    border-color: var(--color-hover);
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+}
+
+/* ================= CONTAINER UTAMA ================= */
+.sisfo-container {
+    width: 90%;
+    max-width: 720px;
+    margin: 30px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding-bottom: 50px;
+}
+
+/* ================= HERO / HEADER HALAMAN ================= */
+.sisfo-hero {
+    text-align: center;
+}
+
+.badge {
+    display: inline-block;
+    padding: 5px 14px;
+    font-size: 13px;
+    font-weight: 700;
+    background: var(--color-white);
+    color: var(--color-navy);
+    border: 2px solid var(--color-navy);
+    border-radius: 20px;
+    text-shadow: none;
+    margin-bottom: 14px;
+    letter-spacing: 0.05em;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.page-title {
+    font-size: clamp(28px, 4.5vw, 40px);
+    font-weight: 800;
+    margin-bottom: 12px;
+    color: var(--color-white);
+    text-shadow: 0 0 10px black;
+    line-height: 1.25;
+}
+
+.page-subtitle {
+    font-size: 17px;
+    font-weight: 500;
+    color: white;
+    text-shadow: 0 0 8px black;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* ================= PERNYATAAN UTAMA ================= */
+.statement-section {
+    width: 100%;
+}
+
+.statement-card {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1.5px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    padding: 30px 26px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
+
+.statement-title {
+    font-size: 20px;
+    font-weight: 800;
+    color: white;
+    text-shadow: 0 0 8px black;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.statement-quote {
+    font-size: clamp(17px, 2.5vw, 20px);
+    font-weight: 600;
+    font-style: italic;
+    color: var(--color-white);
+    text-shadow: 0 0 10px black;
+    line-height: 1.6;
+    margin-bottom: 16px;
+}
+
+.statement-author {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--color-cream);
+    text-shadow: 0 0 8px black;
+}
+
+/* ================= POIN-POIN FOKUS PEMBELAJARAN ================= */
+.points-section {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1.5px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    padding: 28px 24px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.section-title {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--color-white);
+    text-shadow: black;
+    margin-bottom: 20px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+    padding-bottom: 8px;
+}
+
+.points-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+}
+
+.point-card {
+    background-color: var(--color-white);
+    border: 2px solid var(--color-navy);
+    border-radius: 8px;
+    padding: 20px 18px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: 0.2s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.point-icon {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.point-title {
+    font-size: 17px;
+    font-weight: 800;
+    color: Black;
+    text-shadow: none;
+    margin-bottom: 8px;
+    line-height: 1.3;
+}
+
+.point-desc {
+    font-size: 14px;
+    color: Black;
+    text-shadow: none;
+    line-height: 1.5;
+}
+
+.point-card:hover {
+    background-color: grey;
+    border-color: var(--color-hover);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+}
+
+.point-card:hover .point-title {
+    color: White;
+    text-shadow: 0 0 6px rgba(255, 255, 255, 0.3);
+}
+
+.point-card:hover .point-desc {
+    color: White;
+}
+
+/* ================= HARAPAN & REFLEKSI ================= */
+.hope-section {
+    width: 100%;
+}
+
+.hope-box {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1.5px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    padding: 26px 24px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.hope-box p {
+    font-size: 16px;
+    color: #f1f5f9;
+    text-shadow: 0 0 8px black;
+    line-height: 1.7;
+}
+
+/* ================= NAVIGASI HALAMAN ================= */
+.page-navigation {
+    margin-top: 10px;
+}
+
+.nav-links-wrapper {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.nav-btn {
+    padding: 12px 20px;
+    font-size: 15px;
+    font-weight: 800;
+    font-family: 'Montserrat', sans-serif;
+    color: var(--color-navy);
+    background-color: var(--color-white);
+    border: 2px solid var(--color-navy);
+    border-radius: 6px;
+    text-shadow: none;
+    cursor: pointer;
+    transition: 0.2s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    text-align: center;
+}
+
+.nav-btn:hover {
+    background-color: Grey;
+    color: var(--color-white);
+    border-color: var(--color-hover);
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6);
+}
+
+/* Footer */
+.sisfo-footer {
+    text-align: center;
+    padding: 25px 20px;
+    font-size: 14px;
+    color: #cbd5e1;
+    text-shadow: 0 0 6px black;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    margin-top: auto;
+}
+
+/* Responsif Mobile */
+@media (max-width: 650px) {
+    .nav-links-wrapper {
+        flex-direction: column;
+    }
+
+    .nav-btn {
+        width: 100%;
+    }
+}

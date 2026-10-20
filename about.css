@@ -1,0 +1,419 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&display=swap');
+
+:root {
+    --bg-image: url('https://img.magnific.com/free-photo/abstract-grayscale-layered-wavy-shapes_779267-3587.jpg?semt=ais_hybrid&w=740&q=80');
+    --color-navy: black;
+    --color-cream: #fffaf5;
+    --color-white: #ffffff;
+    --color-hover: #374151;
+    --border-gray: #aaaaaa;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+
+    background-image: var(--bg-image);
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    color: var(--color-white);
+    text-shadow: 0 0 10px black;
+    line-height: 1.6;
+
+    display: flex;
+    flex-direction: column;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* ================= NAVIGASI ATAS ================= */
+.page-header {
+    width: 90%;
+    max-width: 720px;
+    margin: 25px auto 0;
+}
+
+.btn-back {
+    display: inline-block;
+    padding: 8px 18px;
+    font-size: 15px;
+    font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
+    color: var(--color-navy);
+    background-color: var(--color-white);
+    border: 2px solid var(--color-navy);
+    border-radius: 6px;
+    text-shadow: none;
+    cursor: pointer;
+    transition: 0.2s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.btn-back:hover {
+    background-color: var(--color-hover);
+    color: var(--color-white);
+    border-color: var(--color-hover);
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+}
+
+/* ================= CONTAINER UTAMA ================= */
+.about-container {
+    width: 90%;
+    max-width: 720px;
+    margin: 30px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding-bottom: 50px;
+}
+
+/* ================= HERO / HEADER HALAMAN ================= */
+.about-hero {
+    text-align: center;
+}
+
+.badge {
+    display: inline-block;
+    padding: 5px 14px;
+    font-size: 13px;
+    font-weight: 700;
+    background: var(--color-white);
+    color: black;
+    border: 2px solid var(--color-navy);
+    border-radius: 20px;
+    text-shadow: none;
+    margin-bottom: 14px;
+    letter-spacing: 0.05em;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.page-title {
+    font-size: clamp(28px, 4.5vw, 42px);
+    font-weight: 800;
+    margin-bottom: 12px;
+    color: var(--color-white);
+    text-shadow: 0 0 10px black;
+    line-height: 1.25;
+}
+
+.page-subtitle {
+    font-size: 17px;
+    font-weight: 500;
+    color: #e2e8f0;
+    text-shadow: 0 0 8px black;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* ================= FOTO PROFIL & BIODATA ================= */
+.profile-showcase-section {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 25px;
+    align-items: center;
+}
+
+.about-photo-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.photo-frame {
+    width: 100%;
+    max-width: 220px;
+    aspect-ratio: 9 / 16;
+    border-radius: 12px;
+    border: 3px solid var(--color-white);
+    overflow: hidden;
+    background: rgba(18, 24, 32, 0.7);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.7);
+    transition: 0.3s ease;
+}
+
+.photo-frame:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 32px rgba(0, 0, 0, 0.85);
+}
+
+.profile-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.photo-caption {
+    font-size: 13px;
+    font-weight: 700;
+    text-shadow: 0 0 6px rgb(0, 0, 0);
+}
+
+.biodata-card {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1.5px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    padding: 26px 24px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.section-title {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--color-white);
+    text-shadow: 0 0 8px black;
+    margin-bottom: 18px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+    padding-bottom: 8px;
+}
+
+.biodata-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.biodata-item {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    padding-bottom: 8px;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.15);
+}
+
+.bio-label {
+    font-size: 13px;
+    font-weight: 700;
+    color: #d5d5d5;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    text-shadow: black;
+}
+
+.bio-value {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--color-cream);
+    text-shadow: 0 0 8px black;
+}
+
+.highlight-role {
+    display: inline-block;
+    background-color: grey;
+    color: white;
+    padding: 2px 10px;
+    border-radius: 4px;
+    font-weight: 800;
+    text-shadow: white;
+    width: fit-content;
+}
+
+
+.motto-section {
+    width: 100%;
+}
+
+.motto-box {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1.5px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    padding: 26px 24px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.motto-heading {
+    font-size: 14px;
+    font-weight: 800;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 10px;
+    text-shadow: Black;
+}
+
+.motto-quote {
+    font-size: clamp(20px, 3.5vw, 26px);
+    font-weight: 800;
+    font-style: italic;
+    color: var(--color-white);
+    text-shadow: 0 0 10px black;
+    margin-bottom: 10px;
+    line-height: 1.35;
+}
+
+.motto-subtext {
+    font-size: 15px;
+    color: white;
+    text-shadow: 0 0 8px black;
+}
+
+/* ================= CERITA SINGKAT ================= */
+.story-section {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1.5px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    padding: 26px 24px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.story-content p {
+    font-size: 16px;
+    color: white;
+    text-shadow: 0 0 8px black;
+    margin-bottom: 14px;
+    line-height: 1.7;
+}
+
+.story-content p:last-child {
+    margin-bottom: 0;
+}
+
+.story-content strong {
+    color: var(--color-cream);
+    font-weight: 700;
+}
+
+/* ================= MINAT & AKTIVITAS FAVORIT ================= */
+.interests-section {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1.5px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    padding: 26px 24px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.interests-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin-top: 14px;
+}
+
+.interest-item {
+    background-color: var(--color-white);
+    border: 2px solid var(--color-navy);
+    border-radius: 8px;
+    padding: 18px 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: 0.2s ease;
+}
+
+.interest-title {
+    font-size: 17px;
+    font-weight: 800;
+    color: var(--color-navy);
+    text-shadow: none;
+    margin-bottom: 8px;
+}
+
+.interest-desc {
+    font-size: 14px;
+    color: black;
+    text-shadow: none;
+    line-height: 1.5;
+}
+
+.interest-item:hover {
+    background-color: grey;
+    border-color: var(--color-hover);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+}
+
+.interest-item:hover .interest-title {
+    color: var(--color-white);
+    text-shadow: 0 0 6px rgba(255, 255, 255, 0.3);
+}
+
+.interest-item:hover .interest-desc {
+    color: white;
+}
+
+.page-navigation {
+    margin-top: 10px;
+}
+
+.nav-links-wrapper {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.nav-btn {
+    padding: 12px 20px;
+    font-size: 15px;
+    font-weight: 800;
+    font-family: 'Montserrat', sans-serif;
+    color: var(--color-navy);
+    background-color: var(--color-white);
+    border: 2px solid var(--color-navy);
+    border-radius: 6px;
+    text-shadow: none;
+    cursor: pointer;
+    transition: 0.2s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    text-align: center;
+}
+
+.nav-btn:hover {
+    background-color: grey;
+    color: var(--color-white);
+    border-color: var(--color-hover);
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6);
+}
+
+/* Footer */
+.about-footer {
+    text-align: center;
+    padding: 25px 20px;
+    font-size: 14px;
+    color: #cbd5e1;
+    text-shadow: 0 0 6px black;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    margin-top: auto;
+}
+
+/* Responsif Mobile */
+@media (max-width: 650px) {
+    .profile-showcase-section {
+        grid-template-columns: 1fr;
+    }
+
+    .photo-frame {
+        max-width: 180px;
+    }
+
+    .nav-links-wrapper {
+        flex-direction: column;
+    }
+
+    .nav-btn {
+        width: 100%;
+    }
+}

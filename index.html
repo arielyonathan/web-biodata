@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerbang Masuk - Website Angkatan</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body class="login-body">
+
+    <!-- Container Utama Halaman Login/Gerbang Masuk -->
+    <main class="login-container">
+        <section class="login-box">
+
+            <!-- Bagian Header / Identitas Singkat Angkatan -->
+            <header class="login-header">
+                <h1 class="login-title">Selamat Datang</h1>
+                <p class="login-subtitle">Silahkan masukkan biodata kamu</p>
+            </header>
+
+            <!-- Form Gerbang Masuk: diarahkan ke dashboard.html -->
+            <form action="dashboard.html" method="GET" class="login-form" id="loginForm">
+
+                <!-- Input 1: Nama (Wajib) -->
+                <div class="form-group">
+                    <label for="nama" class="form-label">Nama Lengkap / Panggilan</label>
+                    <input type="text" id="nama" name="nama" class="form-input" placeholder="Contoh: Budi kusumo"
+                        required>
+                </div>
+
+                <!-- Input 2: Pilihan Input Kustom 1 (Bisa diubah sesuai kebutuhan, contoh: Kelas / NIM / Jurusan) -->
+                <div class="form-group">
+                    <!-- Ganti teks label di bawah ini sesuai kebutuhanmu -->
+                    <label for="inputCustom1" class="form-label">NIM</label>
+                    <input type="text" id="inputCustom1" name="custom1" class="form-input"
+                        placeholder="Contoh: H1101201001" required>
+                </div>
+
+                <!-- Tombol Submit / Masuk -->
+                <div class="form-action">
+                    <button type="submit" class="btn-submit" id="btnMasuk">Masuk ke Website</button>
+                </div>
+
+            </form>
+
+            <!-- Footer Login / Info Tambahan -->
+            <footer class="login-footer">
+                <p class="footer-note">&copy; 2026 Ariel Yonathan. All rights reserved.</p>
+            </footer>
+
+        </section>
+    </main>
+
+</body>
+
+</html>
