@@ -16,11 +16,6 @@
 
         <!-- ================= 1. FOTO PROFIL (PORTRAIT 9:16) ================= -->
         <section class="profile-photo-wrapper">
-            <!-- 
-                Catatan: 
-                - Ganti "foto-profil.jpg" dengan nama/path file fotomu.
-                - Ukuran rasio 9:16 (portrait) bisa kamu atur di CSS nanti (misal: aspect-ratio: 9/16; object-fit: cover;)
-            -->
             <div class="photo-frame">
                 <img src="foto\Halo.jpeg" alt="Foto Profil Saya" class="profile-img" id="profileImage">
             </div>
@@ -39,12 +34,9 @@
         </section>
 
 
-        <!-- ================= 3. STRUKTUR 3 PILIHAN ================= -->
+
         <section class="choices-section">
             <div class="choices-grid">
-
-                <!-- Pilihan 1: About Me (Biodata Lengkap) -->
-                <!-- Kamu bisa arahkan href ke file html terpisah (misal: about.html) atau biarkan berupa card -->
                 <article class="choice-card" id="cardAboutMe">
                     <a href="about.html" class="choice-link">
                         <div class="choice-content">
@@ -54,19 +46,15 @@
                     </a>
                 </article>
 
-                <!-- Pilihan 2: Kenapa Memilih Sistem Informasi -->
-                <!-- Kamu bisa arahkan href ke file html terpisah (misal: sisfo.html) -->
                 <article class="choice-card" id="cardSisfo">
                     <a href="sisfo.html" class="choice-link">
                         <div class="choice-content">
                             <span class="choice-number">02</span>
-                            <h2 class="choice-title">Kenapa memilih Sistem Informasi</h2>
+                            <h2 class="choice-title">Kenapa memilih sistem informasi?</h2>
                         </div>
                     </a>
                 </article>
 
-                <!-- Pilihan 3: Tujuan dan Aspirasi -->
-                <!-- Kamu bisa arahkan href ke file html terpisah (misal: aspirasi.html) -->
                 <article class="choice-card" id="cardAspirasi">
                     <a href="aspirasi.html" class="choice-link">
                         <div class="choice-content">
@@ -81,11 +69,6 @@
 
     </main>
 
-    <!-- 
-        Script opsional & praktis:
-        Otomatis mengambil data 'nama' yang diinput dari index.html 
-        lalu menampilkannya langsung di bagian kata sambutan di atas.
-    -->
     <script>
         const urlParams = new URLSearchParams(window.location.search);
         const namaInput = urlParams.get('nama') || sessionStorage.getItem('namaPengunjung');
@@ -94,6 +77,11 @@
             sessionStorage.setItem('namaPengunjung', namaInput.trim());
         }
     </script>
+
+    <footer class="about-footer">
+        <p>&copy; 2026 Ariel Yonathan. All rights reserved.</p>
+        <p>instagram : @riellyo</p>
+    </footer>
 
 </body>
 

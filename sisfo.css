@@ -325,3 +325,13 @@ a {
         width: 100%;
     }
 }
+
+.about-footer {
+    text-align: center;
+    padding: 25px 20px;
+    font-size: 14px;
+    color: #cbd5e1;
+    text-shadow: 0 0 6px black;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    margin-top: auto;
+}
