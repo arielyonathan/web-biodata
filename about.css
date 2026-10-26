@@ -66,7 +66,7 @@ a {
 }
 
 .btn-back:hover {
-    background-color: var(--color-hover);
+    background-color: grey;
     color: var(--color-white);
     border-color: var(--color-hover);
     text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);

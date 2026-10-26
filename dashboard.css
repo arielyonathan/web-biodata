@@ -63,7 +63,7 @@ body {
     overflow: hidden;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
     transition: 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-    animation: photoPopIn 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards, gentleFloat 5s ease-in-out 0.45s infinite;
+    animation: photoPopIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards, gentleFloat 5s ease-in-out 0.7s infinite;
 }
 
 .photo-frame:hover {
@@ -94,7 +94,7 @@ body {
     border-radius: 12px;
     padding: 30px 24px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    animation: fadeInUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0.04s backwards;
+    animation: fadeInUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.1s backwards;
 }
 
 .greeting-title {
@@ -130,7 +130,7 @@ body {
     line-height: 1.5;
 }
 
-/* ================= 3. STRUKTUR 3 PILIHAN ================= */
+/* ================= 3. STRUKTUR 4 PILIHAN ================= */
 .choices-section {
     width: 100%;
 }
@@ -148,25 +148,25 @@ body {
     border-radius: 8px;
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
     cursor: pointer;
-    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     overflow: hidden;
     position: relative;
 }
 
 #cardAboutMe {
-    animation: fadeInUp 0.35s cubic-bezier(0.16, 1, 0.3, 1) 0.08s backwards;
+    animation: fadeInUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.18s backwards;
 }
 
 #cardPrestasi {
-    animation: fadeInUp 0.35s cubic-bezier(0.16, 1, 0.3, 1) 0.13s backwards;
+    animation: fadeInUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.28s backwards;
 }
 
 #cardSisfo {
-    animation: fadeInUp 0.35s cubic-bezier(0.16, 1, 0.3, 1) 0.18s backwards;
+    animation: fadeInUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.38s backwards;
 }
 
 #cardAspirasi {
-    animation: fadeInUp 0.35s cubic-bezier(0.16, 1, 0.3, 1) 0.23s backwards;
+    animation: fadeInUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.48s backwards;
 }
 
 .choice-link {
