@@ -1,0 +1,484 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&display=swap');
+
+:root {
+    --bg-image: url('https://img.magnific.com/free-photo/abstract-grayscale-layered-wavy-shapes_779267-3587.jpg?semt=ais_hybrid&w=740&q=80');
+    --color-navy: black;
+    --color-cream: #fffaf5;
+    --color-white: #ffffff;
+    --color-hover: #374151;
+    --border-gray: #aaaaaa;
+    --accent-gold: #fbbf24;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+
+    background-image: var(--bg-image);
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    color: var(--color-white);
+    text-shadow: 0 0 10px black;
+    line-height: 1.6;
+
+    display: flex;
+    flex-direction: column;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* ================= NAVIGASI ATAS ================= */
+.page-header {
+    width: 90%;
+    max-width: 820px;
+    margin: 25px auto 0;
+}
+
+.btn-back {
+    display: inline-block;
+    padding: 8px 18px;
+    font-size: 15px;
+    font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
+    color: var(--color-navy);
+    background-color: var(--color-white);
+    border: 2px solid var(--color-navy);
+    border-radius: 6px;
+    text-shadow: none;
+    cursor: pointer;
+    transition: 0.25s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    animation: fadeInLeft 0.5s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+}
+
+.btn-back:hover {
+    background-color: var(--color-hover);
+    color: var(--color-white);
+    border-color: var(--color-hover);
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6);
+}
+
+/* ================= CONTAINER UTAMA ================= */
+.prestasi-container {
+    width: 90%;
+    max-width: 820px;
+    margin: 30px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    padding-bottom: 50px;
+}
+
+/* ================= HERO / HEADER HALAMAN ================= */
+.prestasi-hero {
+    text-align: center;
+}
+
+.badge {
+    display: inline-block;
+    padding: 5px 14px;
+    font-size: 13px;
+    font-weight: 700;
+    background: var(--color-white);
+    color: black;
+    border: 2px solid var(--color-navy);
+    border-radius: 20px;
+    text-shadow: none;
+    margin-bottom: 14px;
+    letter-spacing: 0.05em;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    animation: scaleIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.1s backwards;
+}
+
+.page-title {
+    font-size: clamp(28px, 4.5vw, 42px);
+    font-weight: 800;
+    margin-bottom: 12px;
+    color: var(--color-white);
+    text-shadow: 0 0 10px black;
+    line-height: 1.25;
+    animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.15s backwards;
+}
+
+.page-subtitle {
+    font-size: 16px;
+    font-weight: 500;
+    color: #e2e8f0;
+    text-shadow: 0 0 8px black;
+    max-width: 620px;
+    margin: 0 auto;
+    animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.22s backwards;
+}
+
+/* ================= STATS SUMMARY BAR ================= */
+.stats-summary {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.28s backwards;
+}
+
+.stat-item {
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    padding: 10px 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+}
+
+.stat-icon {
+    font-size: 18px;
+}
+
+.stat-text strong {
+    color: var(--color-cream);
+}
+
+/* ================= DAFTAR PRESTASI ================= */
+.achievements-list {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+/* Card Prestasi */
+.achievement-card {
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1.5px solid rgba(255, 255, 255, 0.25);
+    background: rgba(15, 20, 28, 0.65);
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.55);
+    display: grid;
+    grid-template-columns: 190px 1fr;
+    gap: 24px;
+    align-items: stretch;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.achievement-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(255, 255, 255, 0.45);
+    box-shadow: 0 18px 42px rgba(0, 0, 0, 0.75), 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+/* Animasi Stagger untuk tiap card */
+.achievement-card:nth-child(1) {
+    animation: fadeInUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.32s backwards;
+}
+
+.achievement-card:nth-child(2) {
+    animation: fadeInUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.40s backwards;
+}
+
+.achievement-card:nth-child(3) {
+    animation: fadeInUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.48s backwards;
+}
+
+.achievement-card:nth-child(4) {
+    animation: fadeInUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.56s backwards;
+}
+
+.achievement-card:nth-child(5) {
+    animation: fadeInUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.64s backwards;
+}
+
+/* ================= 9:16 PHOTO FRAME ================= */
+.achievement-photo-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.photo-frame-916 {
+    width: 100%;
+    max-width: 190px;
+    aspect-ratio: 9 / 16;
+    border-radius: 12px;
+    border: 2px dashed rgba(255, 255, 255, 0.45);
+    background: rgba(0, 0, 0, 0.4);
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.6), 0 8px 24px rgba(0, 0, 0, 0.5);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.photo-frame-916:hover {
+    border-color: var(--color-white);
+    border-style: solid;
+    transform: scale(1.02);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.8), 0 0 16px rgba(255, 255, 255, 0.25);
+}
+
+/* Placeholder Box ketika belum ada foto */
+.photo-placeholder-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 16px;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    color: #e2e8f0;
+    transition: 0.3s ease;
+    user-select: none;
+}
+
+.placeholder-icon {
+    font-size: 32px;
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.6));
+    animation: gentleFloat 4s ease-in-out infinite;
+}
+
+.placeholder-title {
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    color: var(--color-cream);
+    text-shadow: 0 0 8px black;
+}
+
+.placeholder-sub {
+    font-size: 11px;
+    font-weight: 500;
+    color: #94a3b8;
+    text-shadow: 0 0 6px black;
+    line-height: 1.3;
+}
+
+.placeholder-badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 3px 8px;
+    border-radius: 4px;
+    margin-top: 4px;
+    color: #ffffff;
+    text-shadow: none;
+}
+
+/* Jika foto dimasukkan ke dalam .photo-frame-916 */
+.achievement-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    border-radius: inherit;
+    transition: transform 0.4s ease;
+}
+
+.photo-frame-916:hover .achievement-img {
+    transform: scale(1.05);
+}
+
+/* Otomatis sembunyikan placeholder jika terdapat tag img di dalam frame */
+.photo-frame-916:has(img) {
+    border-style: solid;
+    border-color: var(--color-white);
+}
+
+.photo-frame-916:has(img) .photo-placeholder-box {
+    display: none;
+}
+
+/* ================= KONTEN TEKS PRESTASI ================= */
+.achievement-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: left;
+    gap: 14px;
+}
+
+.achievement-top {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.achievement-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.achievement-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background: var(--color-white);
+    color: black;
+    border: 2px solid var(--color-navy);
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 900;
+    text-shadow: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.35);
+}
+
+.achievement-category {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-cream);
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    padding: 4px 12px;
+    border-radius: 20px;
+    text-shadow: 0 0 6px black;
+}
+
+.achievement-title {
+    font-size: clamp(20px, 2.5vw, 24px);
+    font-weight: 800;
+    color: var(--color-white);
+    text-shadow: 0 0 10px black;
+    line-height: 1.3;
+    margin-top: 4px;
+}
+
+.achievement-desc {
+    font-size: 15px;
+    color: #f1f5f9;
+    text-shadow: 0 0 8px black;
+    line-height: 1.65;
+}
+
+/* Highlight Points di bawah deskripsi */
+.achievement-highlights {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding-top: 10px;
+    border-top: 1px dashed rgba(255, 255, 255, 0.2);
+}
+
+.highlight-item {
+    font-size: 13.5px;
+    color: #e2e8f0;
+    text-shadow: 0 0 6px black;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.highlight-item strong {
+    color: var(--color-cream);
+}
+
+/* ================= NAVIGASI ANTAR HALAMAN ================= */
+.page-navigation {
+    margin-top: 10px;
+}
+
+.nav-links-wrapper {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.nav-btn {
+    padding: 12px 20px;
+    font-size: 15px;
+    font-weight: 800;
+    font-family: 'Montserrat', sans-serif;
+    color: var(--color-navy);
+    background-color: var(--color-white);
+    border: 2px solid var(--color-navy);
+    border-radius: 6px;
+    text-shadow: none;
+    cursor: pointer;
+    transition: 0.2s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    text-align: center;
+}
+
+.nav-btn:hover {
+    background-color: var(--color-hover);
+    color: var(--color-white);
+    border-color: var(--color-hover);
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6);
+}
+
+/* ================= FOOTER ================= */
+.about-footer {
+    text-align: center;
+    padding: 25px 20px;
+    font-size: 14px;
+    color: #cbd5e1;
+    text-shadow: 0 0 6px black;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    margin-top: auto;
+}
+
+/* ================= RESPONSIVE (MOBILE) ================= */
+@media (max-width: 650px) {
+    .achievement-card {
+        grid-template-columns: 1fr;
+        padding: 20px 18px;
+        gap: 18px;
+    }
+
+    .photo-frame-916 {
+        max-width: 170px;
+    }
+
+    .achievement-content {
+        text-align: left;
+    }
+
+    .achievement-title {
+        font-size: 19px;
+    }
+
+    .nav-links-wrapper {
+        flex-direction: column;
+    }
+
+    .nav-btn {
+        width: 100%;
+    }
+}

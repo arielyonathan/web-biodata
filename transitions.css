@@ -1,13 +1,12 @@
 /* 1. Global Page Entrance & Exit */
 body {
-    opacity: 0;
-    animation: pageEntrance 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation: pageEntrance 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 body.is-leaving {
     opacity: 0 !important;
-    transform: translateY(-8px) scale(0.99) !important;
-    transition: opacity 0.25s ease-out, transform 0.25s ease-out !important;
+    transform: translateY(-6px) scale(0.99) !important;
+    transition: opacity 0.12s ease-out, transform 0.12s ease-out !important;
     pointer-events: none;
 }
 

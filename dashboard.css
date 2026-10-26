@@ -63,7 +63,7 @@ body {
     overflow: hidden;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
     transition: 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-    animation: photoPopIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards, gentleFloat 5s ease-in-out 0.8s infinite;
+    animation: photoPopIn 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards, gentleFloat 5s ease-in-out 0.45s infinite;
 }
 
 .photo-frame:hover {
@@ -94,7 +94,7 @@ body {
     border-radius: 12px;
     padding: 30px 24px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    animation: fadeInUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.18s backwards;
+    animation: fadeInUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0.04s backwards;
 }
 
 .greeting-title {
@@ -154,15 +154,19 @@ body {
 }
 
 #cardAboutMe {
-    animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.32s backwards;
+    animation: fadeInUp 0.35s cubic-bezier(0.16, 1, 0.3, 1) 0.08s backwards;
+}
+
+#cardPrestasi {
+    animation: fadeInUp 0.35s cubic-bezier(0.16, 1, 0.3, 1) 0.13s backwards;
 }
 
 #cardSisfo {
-    animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.44s backwards;
+    animation: fadeInUp 0.35s cubic-bezier(0.16, 1, 0.3, 1) 0.18s backwards;
 }
 
 #cardAspirasi {
-    animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.56s backwards;
+    animation: fadeInUp 0.35s cubic-bezier(0.16, 1, 0.3, 1) 0.23s backwards;
 }
 
 .choice-link {

@@ -39,12 +39,12 @@
                     targetUrl = 'dashboard.html?nama=' + encodeURIComponent(savedName);
                 }
 
-                // Berikan efek keluar (fade out / smooth slide)
+                // Berikan efek keluar (fade out / smooth slide) cepat
                 document.body.classList.add('is-leaving');
 
                 setTimeout(function () {
                     window.location.href = targetUrl;
-                }, 220);
+                }, 100);
             });
         });
 

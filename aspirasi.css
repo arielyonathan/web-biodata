@@ -41,7 +41,6 @@ a {
     text-decoration: none;
 }
 
-/* ================= NAVIGASI ATAS ================= */
 .page-header {
     width: 90%;
     max-width: 720px;
@@ -74,7 +73,6 @@ a {
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6);
 }
 
-/* ================= CONTAINER UTAMA ================= */
 .aspirasi-container {
     width: 90%;
     max-width: 720px;
@@ -85,7 +83,6 @@ a {
     padding-bottom: 50px;
 }
 
-/* ================= HERO / HEADER HALAMAN ================= */
 .aspirasi-hero {
     text-align: center;
 }
@@ -126,7 +123,6 @@ a {
     animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.22s backwards;
 }
 
-/* ================= SECTION UMUM ================= */
 .section-title {
     font-size: 22px;
     font-weight: 800;
@@ -137,7 +133,6 @@ a {
     padding-bottom: 8px;
 }
 
-/* ================= TIMELINE TARGET / MILESTONES ================= */
 .milestones-section {
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
@@ -244,7 +239,6 @@ a {
     color: var(--color-cream);
 }
 
-/* ================= KEAHLIAN YANG INGIN DIKUASAI ================= */
 .skills-target-section {
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
@@ -324,7 +318,6 @@ a {
     color: var(--color-cream);
 }
 
-/* ================= KOMITMEN PRIBADI ================= */
 .commitment-section {
     width: 100%;
     animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.56s backwards;
@@ -367,7 +360,6 @@ a {
     text-shadow: 0 0 8px black;
 }
 
-/* ================= NAVIGASI HALAMAN ================= */
 .page-navigation {
     margin-top: 10px;
 }
