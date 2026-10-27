@@ -356,12 +356,12 @@ a {
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    color: var(--color-cream);
-    background: rgba(255, 255, 255, 0.12);
+    color: black;
+    background: white;
     border: 1px solid rgba(255, 255, 255, 0.25);
     padding: 4px 12px;
     border-radius: 20px;
-    text-shadow: 0 0 6px black;
+    text-shadow: none;
 }
 
 .achievement-title {
