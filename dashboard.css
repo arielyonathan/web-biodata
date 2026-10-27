@@ -137,8 +137,8 @@ body {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-areas:
-        "card-prestasi card-about"
-        "card-aspirasi card-sisfo";
+        "card-about card-prestasi"
+        "card-sisfo card-aspirasi";
     gap: 20px;
     width: 100%;
 }
