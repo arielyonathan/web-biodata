@@ -146,40 +146,39 @@ body {
 /* Individual card placement and theme accents */
 #cardAboutMe {
     grid-area: card-about;
-    --card-accent: #a78bfa;
-    --card-accent-bg: rgba(167, 139, 250, 0.16);
-    --card-glow: rgba(167, 139, 250, 0.35);
+    --card-accent: white;
+    --card-accent-bg: grey;
+    --card-glow: grey;
     animation: scaleIn 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.15s backwards;
 }
 
 #cardPrestasi {
     grid-area: card-prestasi;
-    --card-accent: #fbbf24;
-    --card-accent-bg: rgba(251, 191, 36, 0.16);
-    --card-glow: rgba(251, 191, 36, 0.35);
+    --card-accent: white;
+    --card-accent-bg: grey;
+    --card-glow: grey;
     animation: scaleIn 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.22s backwards;
 }
 
 #cardSisfo {
     grid-area: card-sisfo;
-    --card-accent: #38bdf8;
-    --card-accent-bg: rgba(56, 189, 248, 0.16);
-    --card-glow: rgba(56, 189, 248, 0.35);
+    --card-accent: white;
+    --card-accent-bg: grey;
+    --card-glow: grey;
     animation: scaleIn 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.30s backwards;
 }
 
 #cardAspirasi {
     grid-area: card-aspirasi;
-    --card-accent: #f472b6;
-    --card-accent-bg: rgba(244, 114, 182, 0.16);
-    --card-glow: rgba(244, 114, 182, 0.35);
+    --card-accent: white;
+    --card-accent-bg: grey;
+    --card-glow: grey;
     animation: scaleIn 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.38s backwards;
 }
 
 /* Base Card Styling with Premium Frosted Glass */
 .choice-card {
     position: relative;
-    background: linear-gradient(145deg, rgba(255, 255, 255, 0.13) 0%, rgba(18, 18, 24, 0.78) 100%);
     backdrop-filter: blur(18px);
     -webkit-backdrop-filter: blur(18px);
     border: 1.5px solid rgba(255, 255, 255, 0.22);
@@ -188,25 +187,10 @@ body {
     overflow: hidden;
     cursor: pointer;
     transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-                border-color 0.35s ease,
-                box-shadow 0.35s ease,
-                background 0.35s ease;
+        border-color 0.35s ease,
+        box-shadow 0.35s ease,
+        background 0.35s ease;
     text-align: left;
-}
-
-/* Shimmer Light Reflection on Hover */
-.choice-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -120%;
-    width: 60%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.12), transparent);
-    transform: skewX(-22deg);
-    transition: left 0.75s ease;
-    pointer-events: none;
-    z-index: 2;
 }
 
 .choice-card:hover::before {
