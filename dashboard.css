@@ -39,7 +39,7 @@ body {
 
 .profile-container {
     width: 90%;
-    max-width: 650px;
+    max-width: 740px;
     margin: 40px auto;
     text-align: center;
     display: flex;
@@ -108,7 +108,6 @@ body {
 
 .visitor-name {
     color: var(--color-cream);
-    border-bottom: 2px solid var(--color-cream);
     font-weight: 800;
     text-shadow: 0 0 10px black;
     display: inline-block;
@@ -118,7 +117,6 @@ body {
 .owner-name {
     color: var(--color-white);
     font-weight: 900;
-    text-decoration: underline;
     text-shadow: 0 0 12px black;
 }
 
@@ -130,101 +128,310 @@ body {
     line-height: 1.5;
 }
 
-/* ================= 3. STRUKTUR 4 PILIHAN ================= */
+/* ================= 3. STRUKTUR 4 PILIHAN (2x2 GRID MODERN) ================= */
 .choices-section {
     width: 100%;
 }
 
 .choices-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas:
+        "card-prestasi card-about"
+        "card-aspirasi card-sisfo";
+    gap: 20px;
     width: 100%;
 }
 
-.choice-card {
-    background-color: var(--color-white);
-    border: 2px solid var(--color-navy);
-    border-radius: 8px;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
-    cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    overflow: hidden;
-    position: relative;
-}
-
+/* Individual card placement and theme accents */
 #cardAboutMe {
-    animation: fadeInUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.18s backwards;
+    grid-area: card-about;
+    --card-accent: #a78bfa;
+    --card-accent-bg: rgba(167, 139, 250, 0.16);
+    --card-glow: rgba(167, 139, 250, 0.35);
+    animation: scaleIn 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.15s backwards;
 }
 
 #cardPrestasi {
-    animation: fadeInUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.28s backwards;
+    grid-area: card-prestasi;
+    --card-accent: #fbbf24;
+    --card-accent-bg: rgba(251, 191, 36, 0.16);
+    --card-glow: rgba(251, 191, 36, 0.35);
+    animation: scaleIn 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.22s backwards;
 }
 
 #cardSisfo {
-    animation: fadeInUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.38s backwards;
+    grid-area: card-sisfo;
+    --card-accent: #38bdf8;
+    --card-accent-bg: rgba(56, 189, 248, 0.16);
+    --card-glow: rgba(56, 189, 248, 0.35);
+    animation: scaleIn 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.30s backwards;
 }
 
 #cardAspirasi {
-    animation: fadeInUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.48s backwards;
+    grid-area: card-aspirasi;
+    --card-accent: #f472b6;
+    --card-accent-bg: rgba(244, 114, 182, 0.16);
+    --card-glow: rgba(244, 114, 182, 0.35);
+    animation: scaleIn 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.38s backwards;
 }
 
-.choice-link {
-    display: flex;
-    align-items: center;
-    padding: 18px 24px;
-    text-decoration: none;
-    width: 100%;
-    box-sizing: border-box;
-}
-
-.choice-content {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    width: 100%;
+/* Base Card Styling with Premium Frosted Glass */
+.choice-card {
+    position: relative;
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.13) 0%, rgba(18, 18, 24, 0.78) 100%);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border: 1.5px solid rgba(255, 255, 255, 0.22);
+    border-radius: 18px;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                border-color 0.35s ease,
+                box-shadow 0.35s ease,
+                background 0.35s ease;
     text-align: left;
 }
 
-.choice-number {
-    font-size: 18px;
-    font-weight: 900;
-    color: black;
-    text-shadow: none;
-    min-width: 32px;
-    transition: transform 0.25s ease, color 0.25s ease;
+/* Shimmer Light Reflection on Hover */
+.choice-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -120%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.12), transparent);
+    transform: skewX(-22deg);
+    transition: left 0.75s ease;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.choice-card:hover::before {
+    left: 140%;
+}
+
+/* Card Link Container */
+.choice-link {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 24px 22px;
+    text-decoration: none;
+    width: 100%;
+    height: 100%;
+    min-height: 200px;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 1;
+}
+
+/* Card Header: Icon & Top Badge */
+.choice-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+
+.choice-icon-wrap {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: var(--card-accent-bg);
+    border: 1px solid var(--card-accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--card-accent);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s ease;
+}
+
+.choice-icon {
+    width: 22px;
+    height: 22px;
+    transition: transform 0.3s ease;
+}
+
+.choice-header-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.choice-number-badge {
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    color: rgba(255, 255, 255, 0.85);
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    padding: 3px 10px;
+    backdrop-filter: blur(8px);
+    transition: all 0.3s ease;
+}
+
+.choice-arrow {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.choice-arrow svg {
+    width: 14px;
+    height: 14px;
+    transition: transform 0.3s ease;
+}
+
+/* Card Body */
+.choice-body {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.choice-category {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: var(--card-accent);
+    margin-bottom: 6px;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+    display: block;
 }
 
 .choice-title {
-    font-size: 20px;
+    font-size: clamp(17px, 1.8vw, 20px);
     font-weight: 800;
-    color: var(--color-navy);
-    text-shadow: none;
-    margin: 0;
-    transition: transform 0.25s ease, color 0.25s ease;
-    flex-grow: 1;
+    color: var(--color-white);
+    line-height: 1.35;
+    margin: 0 0 8px 0;
+    text-shadow: 0 0 12px rgba(0, 0, 0, 0.7);
+    transition: color 0.3s ease, transform 0.3s ease;
 }
 
-/* Hover ala referensi (.tombol-area button:hover) */
+.choice-desc {
+    font-size: 13px;
+    font-weight: 400;
+    color: #cbd5e1;
+    line-height: 1.5;
+    margin: 0;
+    text-shadow: 0 0 6px black;
+    transition: color 0.3s ease;
+}
+
+/* Card Footer */
+.choice-footer {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 18px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.choice-action-text {
+    font-size: 12px;
+    font-weight: 700;
+    color: #e2e8f0;
+    letter-spacing: 0.3px;
+    transition: color 0.3s ease;
+}
+
+.choice-action-arrow {
+    font-size: 14px;
+    color: var(--card-accent);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Card Watermark (Latar Belakang Angka Artistik) */
+.choice-watermark {
+    position: absolute;
+    right: 8px;
+    bottom: -10px;
+    font-size: 78px;
+    font-weight: 900;
+    line-height: 1;
+    color: #ffffff;
+    opacity: 0.05;
+    pointer-events: none;
+    user-select: none;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 0;
+}
+
+/* Hover States & Dynamic Interactions */
 .choice-card:hover {
-    background-color: var(--color-hover);
-    border-color: var(--color-hover);
-    transform: translateY(-4px) scale(1.01);
-    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.65), 0 0 15px rgba(255, 255, 255, 0.15);
+    transform: translateY(-8px) scale(1.02);
+    border-color: var(--card-accent);
+    box-shadow: 0 20px 42px rgba(0, 0, 0, 0.75), 0 0 24px var(--card-glow);
+}
+
+.choice-card:hover .choice-icon-wrap {
+    transform: scale(1.1);
+    background-color: var(--card-accent);
+    color: #0b0f19;
+    box-shadow: 0 0 16px var(--card-glow);
+}
+
+.choice-card:hover .choice-number-badge {
+    border-color: var(--card-accent);
+    color: var(--card-accent);
+    background: rgba(255, 255, 255, 0.16);
+}
+
+.choice-card:hover .choice-arrow {
+    background: var(--card-accent);
+    border-color: var(--card-accent);
+    color: #0b0f19;
+    transform: translate(3px, -3px) rotate(4deg);
+    box-shadow: 0 0 14px var(--card-glow);
+}
+
+.choice-card:hover .choice-arrow svg {
+    transform: scale(1.15);
 }
 
 .choice-card:hover .choice-title {
-    color: var(--color-white);
-    text-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
-    transform: translateX(4px);
+    text-shadow: 0 0 14px rgba(255, 255, 255, 0.4), 0 0 8px black;
 }
 
-.choice-card:hover .choice-number {
-    color: white;
-    text-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
-    transform: scale(1.1);
+.choice-card:hover .choice-desc {
+    color: #f1f5f9;
 }
 
+.choice-card:hover .choice-action-text {
+    color: #ffffff;
+}
+
+.choice-card:hover .choice-action-arrow {
+    transform: translateX(5px);
+}
+
+.choice-card:hover .choice-watermark {
+    opacity: 0.13;
+    transform: scale(1.08) translateY(-4px);
+    color: var(--card-accent);
+}
+
+.choice-card:active {
+    transform: translateY(-3px) scale(0.99);
+}
+
+/* ================= FOOTER ================= */
 .about-footer {
     text-align: center;
     padding: 25px 20px;
@@ -233,14 +440,15 @@ body {
     text-shadow: 0 0 6px black;
     border-top: 1px solid rgba(255, 255, 255, 0.15);
     margin-top: auto;
+    width: 100%;
 }
 
-
-@media (max-width: 600px) {
+/* ================= RESPONSIVE DESIGN ================= */
+@media (max-width: 700px) {
     .profile-container {
         width: 92%;
         margin: 25px auto;
-        gap: 22px;
+        gap: 24px;
     }
 
     .photo-frame {
@@ -251,25 +459,87 @@ body {
         padding: 22px 16px;
     }
 
+    .choices-grid {
+        gap: 14px;
+    }
+
     .choice-link {
-        padding: 16px 18px;
+        padding: 18px 16px;
+        min-height: 180px;
     }
 
     .choice-title {
-        font-size: 17px;
+        font-size: 16px;
     }
 
-    .choice-number {
-        font-size: 16px;
+    .choice-desc {
+        font-size: 12px;
+    }
+
+    .choice-icon-wrap {
+        width: 38px;
+        height: 38px;
+    }
+
+    .choice-icon {
+        width: 19px;
+        height: 19px;
+    }
+
+    .choice-arrow {
+        width: 28px;
+        height: 28px;
+    }
+
+    .choice-watermark {
+        font-size: 64px;
     }
 }
 
-.about-footer {
-    text-align: center;
-    padding: 25px 20px;
-    font-size: 14px;
-    color: #cbd5e1;
-    text-shadow: 0 0 6px black;
-    border-top: 1px solid rgba(255, 255, 255, 0.15);
-    margin-top: auto;
+@media (max-width: 480px) {
+    .choices-grid {
+        gap: 10px;
+    }
+
+    .choice-link {
+        padding: 15px 12px;
+        min-height: 165px;
+    }
+
+    .choice-header {
+        margin-bottom: 12px;
+    }
+
+    .choice-category {
+        font-size: 10px;
+    }
+
+    .choice-title {
+        font-size: 14px;
+        margin-bottom: 4px;
+    }
+
+    .choice-desc {
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        font-size: 11px;
+        line-height: 1.35;
+    }
+
+    .choice-footer {
+        margin-top: 12px;
+        padding-top: 8px;
+    }
+
+    .choice-action-text {
+        font-size: 11px;
+    }
+
+    .choice-watermark {
+        font-size: 50px;
+        bottom: -5px;
+        right: 5px;
+    }
 }
