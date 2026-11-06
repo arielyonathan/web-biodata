@@ -1,13 +1,20 @@
 /**
- * Comments System - Terhubung dengan Backend API (/api/comments) & LocalStorage
- * Khusus untuk halaman Dashboard Utama.
+ * Comments System - Antarmuka Komentar Pengunjung (Client-Side)
+ * Khusus untuk Halaman Dashboard Utama.
  * 
- * Komentar yang dikirim akan tersimpan di server (comments.json) sehingga dapat
- * dibaca oleh siapapun yang membuka website ini dari HP, Laptop, atau Device lain!
+ * Terintegrasi dengan sessionStorage (nama pengunjung dari gerbang login)
+ * dan localStorage browser untuk penyimpanan lokal tanpa memerlukan backend/server.
  */
 
 (function (window) {
     'use strict';
+
+    // Daftar nama author dummy terdahulu untuk pembersihan otomatis
+    const DUMMY_AUTHORS = [
+        'Kevin Alvaro', 'Siti Nurhaliza', 'Budi Santoso', 'Dina Rahmawati',
+        'Fajar Pratama', 'Clara Sitorus', 'Andi Wijaya', 'Rizky Kurniawan', 'Tester'
+    ];
+    const DUMMY_IDS = [1, 2, 46, 101, 102, 201, 202, 301, 302];
 
     // Helper: Escaping HTML untuk keamanan
     function escapeHtml(str) {
@@ -68,39 +75,8 @@
         return now.toLocaleDateString('id-ID', options);
     }
 
-    // Deteksi Endpoint Backend API yang tepat
-    function getApiEndpoints() {
-        const endpoints = [];
-        // 1. Endpoint relatif (paling utama saat dibuka lewat server.py di device manapun)
-        endpoints.push('/api/comments');
-        
-        // 2. Jika dibuka lewat Live Server (port 5500) atau file:///, fallback ke port 8000
-        if (window.location.hostname) {
-            endpoints.push(`http://${window.location.hostname}:8000/api/comments`);
-        }
-        endpoints.push('http://localhost:8000/api/comments');
-        endpoints.push('http://127.0.0.1:8000/api/comments');
-        
-        return endpoints;
-    }
-
-    // Fetch dari API dengan fallback antar endpoint
-    async function fetchApi(pathOptions, fetchOptions) {
-        for (const url of pathOptions) {
-            try {
-                const res = await fetch(url, fetchOptions);
-                if (res.ok) {
-                    return await res.json();
-                }
-            } catch (err) {
-                // Lanjut coba endpoint berikutnya
-            }
-        }
-        return null;
-    }
-
     // Inisialisasi Widget Komentar (Khusus Dashboard)
-    function initComments(config) {
+    function initComments(config = {}) {
         const {
             containerId = 'dashboard-comments-container',
             storageKey = 'komentar_dashboard_utama',
@@ -116,19 +92,25 @@
 
         let activeUser = getActiveUserName();
         let comments = [];
-        const apiUrls = getApiEndpoints();
 
-        // 1. Muat awal dari localStorage agar instan tanpa loading
+        // Muat komentar dari localStorage
         try {
-            const cached = localStorage.getItem(storageKey);
-            if (cached) {
-                comments = JSON.parse(cached);
+            const saved = localStorage.getItem(storageKey);
+            if (saved) {
+                const parsed = JSON.parse(saved);
+                // Bersihkan data dummy masa lalu jika ada
+                comments = parsed.filter(item => {
+                    if (DUMMY_IDS.includes(Number(item.id))) return false;
+                    if (DUMMY_AUTHORS.includes(item.author)) return false;
+                    return true;
+                });
+                localStorage.setItem(storageKey, JSON.stringify(comments));
             }
         } catch (e) {
             comments = [];
         }
 
-        // Render struktur HTML form & list (Desain asli dipertahankan 100%)
+        // Render struktur HTML form & list
         container.innerHTML = `
             <section class="comments-section">
                 <!-- Header -->
@@ -150,12 +132,12 @@
                         <span class="active-user-dot"></span>
                         <span>Masuk sebagai: <strong class="active-user-name" id="${containerId}-active-name">${escapeHtml(activeUser)}</strong></span>
                     </div>
-                    <span class="active-user-note">Tersimpan ke server &amp; dapat dilihat device lain</span>
+                    <span class="active-user-note">Komentar akan tersimpan di browser ini</span>
                 </div>
 
                 <!-- Toast Notifikasi -->
                 <div class="comment-toast" id="${containerId}-toast">
-                    ✅ Komentar kamu berhasil disimpan ke server!
+                    ✅ Komentar kamu berhasil ditambahkan!
                 </div>
 
                 <!-- Form Tambah Komentar -->
@@ -248,41 +230,22 @@
 
             // Event Hapus Komentar
             listEl.querySelectorAll('.btn-delete-comment').forEach(btn => {
-                btn.addEventListener('click', async function () {
+                btn.addEventListener('click', function () {
                     const idToDelete = this.getAttribute('data-id');
                     if (confirm('Yakin ingin menghapus komentar ini?')) {
-                        // 1. Hapus di UI & LocalStorage
                         comments = comments.filter(c => String(c.id) !== String(idToDelete));
-                        localStorage.setItem(storageKey, JSON.stringify(comments));
+                        try {
+                            localStorage.setItem(storageKey, JSON.stringify(comments));
+                        } catch (e) {
+                            console.error(e);
+                        }
                         renderCommentsList();
-
-                        // 2. Hapus di Backend API
-                        await fetchApi(apiUrls.map(u => `${u}?id=${idToDelete}`), {
-                            method: 'DELETE'
-                        });
                     }
                 });
             });
         }
 
         renderCommentsList();
-
-        // 2. Ambil data komentar terbaru dari Backend Server
-        async function syncFromBackend() {
-            const data = await fetchApi(apiUrls, { method: 'GET' });
-            if (Array.isArray(data)) {
-                comments = data;
-                localStorage.setItem(storageKey, JSON.stringify(comments));
-                renderCommentsList();
-            }
-        }
-
-        // Sinkronisasi awal dari backend
-        syncFromBackend();
-
-        // Polling berkala (setiap 4 detik) agar jika ada orang lain di device berbeda kirim komen,
-        // komen langsung muncul otomatis tanpa perlu refresh!
-        const pollInterval = setInterval(syncFromBackend, 4000);
 
         // Sinkronisasi Storage Event untuk multi-tab
         window.addEventListener('storage', function (e) {
@@ -294,8 +257,8 @@
             }
         });
 
-        // Submit Komentar Baru (Disimpan ke Backend API & LocalStorage)
-        formEl.addEventListener('submit', async function (e) {
+        // Submit Komentar Baru (Tersimpan ke localStorage)
+        formEl.addEventListener('submit', function (e) {
             e.preventDefault();
 
             const authorName = authorInput.value.trim() || activeUser || 'Pengunjung';
@@ -317,12 +280,18 @@
                 time: getFormattedTimestamp()
             };
 
-            // Update lokal instan (Optimistic UI)
+            // Masukkan ke urutan paling atas
             comments.unshift(newComment);
-            localStorage.setItem(storageKey, JSON.stringify(comments));
+
+            try {
+                localStorage.setItem(storageKey, JSON.stringify(comments));
+            } catch (err) {
+                console.error('Gagal menyimpan komentar', err);
+            }
+
             renderCommentsList();
 
-            // Reset input form
+            // Reset form input
             textInput.value = '';
 
             // Tampilkan toast
@@ -330,23 +299,10 @@
             setTimeout(() => {
                 toastEl.style.display = 'none';
             }, 3500);
-
-            // Simpan permanen ke Backend API
-            const postResponse = await fetchApi(apiUrls, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(newComment)
-            });
-
-            if (postResponse && Array.isArray(postResponse.comments)) {
-                comments = postResponse.comments;
-                localStorage.setItem(storageKey, JSON.stringify(comments));
-                renderCommentsList();
-            }
         });
     }
 
-    // Auto-Init: Otomatis berjalan HANYA di Dashboard
+    // Auto-Init: Otomatis aktif HANYA di halaman Dashboard
     document.addEventListener('DOMContentLoaded', function () {
         if (document.getElementById('dashboard-comments-container')) {
             initComments({
