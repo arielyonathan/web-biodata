@@ -2,10 +2,21 @@
  * Comments System - Antarmuka Komentar Berdasarkan Nama Pengguna
  * Terintegrasi dengan sessionStorage (nama pengunjung dari gerbang login)
  * dan localStorage (penyimpanan komentar permanen).
+ * 
+ * Versi Real Storage (Tanpa data dummy/palsu).
+ * Komentar yang dikirim oleh pengunjung pertama akan tersimpan dan
+ * dapat dibaca oleh pengunjung berikutnya.
  */
 
 (function (window) {
     'use strict';
+
+    // Daftar nama author dummy terdahulu untuk pembersihan otomatis di localStorage
+    const DUMMY_AUTHORS = [
+        'Kevin Alvaro', 'Siti Nurhaliza', 'Budi Santoso', 'Dina Rahmawati',
+        'Fajar Pratama', 'Clara Sitorus', 'Andi Wijaya', 'Rizky Kurniawan'
+    ];
+    const DUMMY_IDS = [1, 2, 101, 102, 201, 202, 301, 302];
 
     // Helper: Escaping HTML untuk keamanan
     function escapeHtml(str) {
@@ -78,24 +89,37 @@
         const container = document.getElementById(containerId);
         if (!container) return;
 
+        // Cegah inisialisasi ganda pada container yang sama
+        if (container.dataset.initialized === 'true') return;
+        container.dataset.initialized = 'true';
+
         let activeUser = getActiveUserName();
 
-        // Muat komentar dari localStorage
+        // Muat komentar murni dari localStorage (tanpa dummy)
         let comments = [];
         try {
             const saved = localStorage.getItem(storageKey);
             if (saved) {
-                comments = JSON.parse(saved);
+                const parsed = JSON.parse(saved);
+                // Bersihkan komentar dummy masa lalu jika masih ada di browser pengguna
+                comments = parsed.filter(item => {
+                    if (DUMMY_IDS.includes(Number(item.id))) return false;
+                    if (DUMMY_AUTHORS.includes(item.author)) return false;
+                    return true;
+                });
+                // Simpan kembali data yang sudah bersih
+                localStorage.setItem(storageKey, JSON.stringify(comments));
             } else if (defaultComments && defaultComments.length > 0) {
+                // Jika sengaja diberikan defaultComments non-dummy
                 comments = defaultComments;
                 localStorage.setItem(storageKey, JSON.stringify(comments));
             }
         } catch (e) {
             console.error('Gagal membaca komentar dari localStorage', e);
-            comments = defaultComments || [];
+            comments = [];
         }
 
-        // Render struktur HTML form & list
+        // Render struktur HTML form & list (desain tetap sama)
         container.innerHTML = `
             <section class="comments-section">
                 <!-- Header -->
@@ -122,7 +146,7 @@
 
                 <!-- Toast Notifikasi -->
                 <div class="comment-toast" id="${containerId}-toast">
-                    Komentar kamu berhasil ditambahkan!
+                    ✅ Komentar kamu berhasil ditambahkan dan disimpan!
                 </div>
 
                 <!-- Form Tambah Komentar -->
@@ -135,10 +159,10 @@
                         <div class="form-field">
                             <label for="${containerId}-select-tag">Kategori Komentar</label>
                             <select id="${containerId}-select-tag">
-                                <option value="Diskusi"> Diskusi</option>
-                                <option value="Apresiasi / Kesan"> Apresiasi / Kesan</option>
-                                <option value="Masukan & Saran"> Masukan & Saran</option>
-                                <option value="Pertanyaan"> Pertanyaan</option>
+                                <option value="💬 Diskusi">💬 Diskusi</option>
+                                <option value="⭐ Apresiasi / Kesan">⭐ Apresiasi / Kesan</option>
+                                <option value="💡 Masukan & Saran">💡 Masukan & Saran</option>
+                                <option value="❓ Pertanyaan">❓ Pertanyaan</option>
                             </select>
                         </div>
                     </div>
@@ -173,7 +197,7 @@
         const tagSelect = document.getElementById(`${containerId}-select-tag`);
         const activeNameEl = document.getElementById(`${containerId}-active-name`);
 
-        // Render List
+        // Render List Komentar
         function renderCommentsList() {
             counterEl.textContent = `${comments.length} Komentar`;
             if (comments.length === 0) {
@@ -186,7 +210,7 @@
             }
 
             let html = '';
-            comments.forEach((item, index) => {
+            comments.forEach((item) => {
                 const initial = item.author ? item.author.trim().charAt(0).toUpperCase() : '?';
                 const bgGradient = getAvatarColor(item.author || 'User');
                 html += `
@@ -213,7 +237,7 @@
 
             listEl.innerHTML = html;
 
-            // Event Hapus Komentar
+            // Event Hapus Komentar (berguna jika ingin menghapus komentar saat pengetesan)
             listEl.querySelectorAll('.btn-delete-comment').forEach(btn => {
                 btn.addEventListener('click', function () {
                     const idToDelete = this.getAttribute('data-id');
@@ -232,7 +256,20 @@
 
         renderCommentsList();
 
-        // Submit Komentar Baru
+        // Sinkronisasi Antar-Tab (Real-time storage event)
+        // Jika orang pertama kirim komentar di Tab 1, orang kedua di Tab 2 langsung melihatnya
+        window.addEventListener('storage', function (e) {
+            if (e.key === storageKey) {
+                try {
+                    comments = JSON.parse(e.newValue || '[]');
+                    renderCommentsList();
+                } catch (err) {
+                    console.error('Gagal menyinkronkan komentar', err);
+                }
+            }
+        });
+
+        // Submit Komentar Baru (Tersimpan Permanen di localStorage)
         formEl.addEventListener('submit', function (e) {
             e.preventDefault();
 
@@ -242,7 +279,7 @@
 
             if (!textContent) return;
 
-            // Simpan nama baru jika diubah
+            // Simpan nama baru jika pengunjung mengubah nama di formulir
             sessionStorage.setItem('namaPengunjung', authorName);
             activeUser = authorName;
             if (activeNameEl) activeNameEl.textContent = authorName;
@@ -255,21 +292,22 @@
                 time: getFormattedTimestamp()
             };
 
-            // Masukkan ke awal daftar
+            // Masukkan ke urutan paling atas
             comments.unshift(newComment);
 
+            // Simpan ke localStorage agar permanen bagi siapa saja yang membuka halaman ini
             try {
                 localStorage.setItem(storageKey, JSON.stringify(comments));
             } catch (err) {
-                console.error('Gagal menyimpan komentar', err);
+                console.error('Gagal menyimpan komentar ke localStorage', err);
             }
 
             renderCommentsList();
 
-            // Reset input text
+            // Reset input teks
             textInput.value = '';
 
-            // Tampilkan toast
+            // Tampilkan notifikasi berhasil
             toastEl.style.display = 'block';
             setTimeout(() => {
                 toastEl.style.display = 'none';
@@ -277,11 +315,50 @@
         });
     }
 
-    // Export ke window
+    // Auto-Init: Otomatis mendeteksi container komentar pada halaman tanpa perlu script tambahan di tiap file
+    document.addEventListener('DOMContentLoaded', function () {
+        // 1. Dashboard Utama
+        if (document.getElementById('dashboard-comments-container')) {
+            initComments({
+                containerId: 'dashboard-comments-container',
+                storageKey: 'komentar_dashboard_utama',
+                title: '💬 Buku Tamu & Komentar Pengunjung'
+            });
+        }
+
+        // 2. Arsip Partisi
+        if (document.getElementById('arsip-comments-container')) {
+            initComments({
+                containerId: 'arsip-comments-container',
+                storageKey: 'komentar_arsip_partisi',
+                title: '💬 Komentar & Tanggapan Arsip Partisi'
+            });
+        }
+
+        // 3. Materi Partisi 1
+        if (document.getElementById('materi1-comments-container')) {
+            initComments({
+                containerId: 'materi1-comments-container',
+                storageKey: 'komentar_materi_partisi_1',
+                title: '💬 Komentar & Diskusi Materi Partisi 1'
+            });
+        }
+
+        // 4. Materi Partisi 2 (Atau materi1 yang menggunakan id materi2)
+        if (document.getElementById('materi2-comments-container')) {
+            const isMateri1 = window.location.pathname.includes('materi-partisi-1');
+            initComments({
+                containerId: 'materi2-comments-container',
+                storageKey: isMateri1 ? 'komentar_materi_partisi_1' : 'komentar_materi_partisi_2',
+                title: isMateri1 ? '💬 Komentar & Diskusi Materi Partisi 1' : '💬 Komentar & Diskusi Materi Partisi 2'
+            });
+        }
+    });
+
+    // Ekspor API
     window.BiodataComments = {
         init: initComments,
         getUserName: getActiveUserName
     };
 
 })(window);
-

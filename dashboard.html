@@ -214,32 +214,6 @@
             document.getElementById('namaPengunjung').textContent = namaInput;
             sessionStorage.setItem('namaPengunjung', namaInput.trim());
         }
-
-        document.addEventListener('DOMContentLoaded', function () {
-            if (window.BiodataComments) {
-                window.BiodataComments.init({
-                    containerId: 'dashboard-comments-container',
-                    storageKey: 'komentar_dashboard_utama',
-                    title: '💬 Buku Tamu & Komentar Pengunjung',
-                    defaultComments: [
-                        {
-                            id: 1,
-                            author: 'Kevin Alvaro',
-                            text: 'Keren banget website biodata Ariel! Tampilannya bersih, modern, dan animasinya smooth.',
-                            tag: '⭐ Apresiasi / Kesan',
-                            time: '04 Nov 2026, 18:30'
-                        },
-                        {
-                            id: 2,
-                            author: 'Siti Nurhaliza',
-                            text: 'Arsip materi partisinya sangat membantu buat review mata kuliah Sistem Informasi!',
-                            tag: '💬 Diskusi',
-                            time: '05 Nov 2026, 12:45'
-                        }
-                    ]
-                });
-            }
-        });
     </script>
 
     <footer class="about-footer">
