@@ -1,0 +1,347 @@
+/* =========================================================
+   KOMENTAR PENGUNJUNG (COMMENTS SYSTEM STYLING)
+   Desain Frosted Glassmorphism Serasi dengan Website Biodata
+========================================================= */
+
+.comments-section {
+    width: 100%;
+    margin-top: 40px;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1.5px solid rgba(255, 255, 255, 0.22);
+    border-radius: 18px;
+    padding: 30px 26px;
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.18);
+    color: #ffffff;
+    box-sizing: border-box;
+    text-align: left;
+    animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+}
+
+/* Header Komentar */
+.comments-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    padding-bottom: 16px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.comments-title-wrap {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.comments-icon {
+    width: 28px;
+    height: 28px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+}
+
+.comments-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+}
+
+.comments-counter {
+
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #f1f5f9;
+}
+
+/* Identitas Pengguna Aktif */
+.active-user-badge {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    padding: 10px 16px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 13px;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.active-user-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.active-user-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #22c55e;
+    box-shadow: 0 0 8px #22c55e;
+    display: inline-block;
+}
+
+.active-user-name {
+    font-weight: 700;
+    color: #fffaf5;
+    text-decoration: underline;
+}
+
+.active-user-note {
+    color: white;
+    font-size: 12px;
+}
+
+/* Formulir Komentar */
+.comment-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 30px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+@media (max-width: 600px) {
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+}
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form-field label {
+    font-size: 13px;
+    font-weight: 600;
+    color: white;
+    text-shadow: 0 0 6px black;
+}
+
+.form-field input,
+.form-field select,
+.form-field textarea {
+    background: rgba(0, 0, 0, 0.45);
+    border: 1.5px solid rgba(255, 255, 255, 0.25);
+    border-radius: 10px;
+    padding: 12px 14px;
+    color: #ffffff;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    outline: none;
+    transition: all 0.25s ease;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus {
+    border-color: #ffffff;
+    background: rgba(0, 0, 0, 0.65);
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.35);
+}
+
+.form-field input::placeholder,
+.form-field textarea::placeholder {
+    color: white;
+}
+
+.form-field select option {
+    background: #1e1e1e;
+    color: #ffffff;
+}
+
+.form-field textarea {
+    min-height: 90px;
+    resize: vertical;
+    line-height: 1.5;
+}
+
+.comment-submit-wrap {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.btn-comment-submit {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #ffffff;
+    color: #000000;
+    border: 2px solid #ffffff;
+    border-radius: 8px;
+    padding: 11px 24px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    text-shadow: none;
+}
+
+.btn-comment-submit:hover {
+    background: #374151;
+    color: #ffffff;
+    border-color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
+}
+
+.btn-comment-submit:active {
+    transform: translateY(0);
+}
+
+/* Toast Notifikasi */
+.comment-toast {
+    display: none;
+    background: rgba(34, 197, 94, 0.2);
+    border: 1px solid white;
+    color: white;
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 18px;
+    animation: fadeInDown 0.3s ease;
+}
+
+/* Daftar Komentar */
+.comments-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.comment-item {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 12px;
+    padding: 16px 18px;
+    display: flex;
+    gap: 14px;
+    transition: transform 0.25s ease, border-color 0.25s ease;
+    animation: fadeInUp 0.4s ease;
+}
+
+.comment-item:hover {
+    border-color: rgba(255, 255, 255, 0.35);
+    background: rgba(255, 255, 255, 0.09);
+    transform: translateY(-2px);
+}
+
+.comment-avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #475569, #1e293b);
+    border: 1.5px solid rgba(255, 255, 255, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 700;
+    color: #ffffff;
+    flex-shrink: 0;
+    text-shadow: none;
+}
+
+.comment-content {
+    flex-grow: 1;
+    min-width: 0;
+}
+
+.comment-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 6px;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.comment-author-wrap {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.comment-author {
+    font-weight: 700;
+    font-size: 15px;
+    color: #ffffff;
+}
+
+.comment-tag {
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-weight: 600;
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: #e2e8f0;
+}
+
+.comment-meta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.comment-time {
+    font-size: 12px;
+    color: white;
+}
+
+.btn-delete-comment {
+    background: transparent;
+    border: none;
+    color: #94a3b8;
+    cursor: pointer;
+    font-size: 13px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+.btn-delete-comment:hover {
+    color: #ef4444;
+    background: rgba(239, 68, 68, 0.15);
+}
+
+.comment-text {
+    font-size: 14px;
+    line-height: 1.55;
+    color: #f1f5f9;
+    word-break: break-word;
+    margin: 0;
+}
+
+.empty-comments {
+    text-align: center;
+    padding: 30px 10px;
+    color: #94a3b8;
+    font-size: 14px;
+    border: 1px dashed rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+}
