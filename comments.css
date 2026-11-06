@@ -345,3 +345,82 @@
     border: 1px dashed rgba(255, 255, 255, 0.2);
     border-radius: 12px;
 }
+
+/* Loading, Error States & Indikator untuk Integrasi Supabase */
+.comments-loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 35px 15px;
+    color: #e2e8f0;
+    font-size: 14px;
+    border: 1px dashed rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+}
+
+.spinner {
+    width: 22px;
+    height: 22px;
+    border: 2.5px solid rgba(255, 255, 255, 0.2);
+    border-top-color: #ffffff;
+    border-radius: 50%;
+    animation: spinComment 0.8s linear infinite;
+}
+
+.spinner-small {
+    width: 14px;
+    height: 14px;
+    border: 2px solid rgba(0, 0, 0, 0.3);
+    border-top-color: #000000;
+    border-radius: 50%;
+    display: inline-block;
+    animation: spinComment 0.8s linear infinite;
+    vertical-align: middle;
+}
+
+@keyframes spinComment {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.comment-error-alert {
+    background: rgba(239, 68, 68, 0.15);
+    border: 1px solid rgba(239, 68, 68, 0.45);
+    color: #fca5a5;
+    padding: 14px 18px;
+    border-radius: 10px;
+    font-size: 13.5px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    animation: fadeInDown 0.3s ease;
+}
+
+.comment-toast.error {
+    background: rgba(239, 68, 68, 0.25);
+    border-color: #ef4444;
+    color: #fca5a5;
+}
+
+.comment-toast.success {
+    background: rgba(34, 197, 94, 0.25);
+    border-color: #22c55e;
+    color: #86efac;
+}
+
+.btn-comment-submit:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+.char-counter {
+    font-size: 11px;
+    color: #94a3b8;
+    text-align: right;
+    margin-top: 4px;
+}
