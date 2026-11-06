@@ -14,7 +14,7 @@
  */
 
 window.SUPABASE_CONFIG = {
-    url: '',      // Contoh: 'https://xxxxxxxxxxxxxxxx.supabase.co'
-    anonKey: ''   // Contoh: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...'
+    url: 'https://tycrprswzosomolillfq.supabase.co',      // Contoh: 'https://xxxxxxxxxxxxxxxx.supabase.co'
+    anonKey: 'sb_publishable_GZDBIJAXf8PUgdnHeoLJ6w_KceZrbrF'   // Contoh: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...'
 };
 
