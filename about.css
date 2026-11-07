@@ -41,7 +41,6 @@ a {
     text-decoration: none;
 }
 
-/* ================= NAVIGASI ATAS ================= */
 .page-header {
     width: 90%;
     max-width: 720px;
@@ -74,7 +73,6 @@ a {
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6);
 }
 
-/* ================= CONTAINER UTAMA ================= */
 .about-container {
     width: 90%;
     max-width: 720px;
@@ -85,7 +83,6 @@ a {
     padding-bottom: 50px;
 }
 
-/* ================= HERO / HEADER HALAMAN ================= */
 .about-hero {
     text-align: center;
 }
@@ -126,7 +123,6 @@ a {
     animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.22s backwards;
 }
 
-/* ================= FOTO PROFIL & BIODATA ================= */
 .profile-showcase-section {
     display: grid;
     grid-template-columns: 220px 1fr;
@@ -278,7 +274,6 @@ a {
     text-shadow: 0 0 8px black;
 }
 
-/* ================= CERITA SINGKAT ================= */
 .story-section {
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
@@ -306,7 +301,6 @@ a {
     font-weight: 700;
 }
 
-/* ================= MINAT & AKTIVITAS FAVORIT ================= */
 .interests-section {
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);

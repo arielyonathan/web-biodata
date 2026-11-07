@@ -38,7 +38,6 @@ a {
     text-decoration: none;
 }
 
-/* ================= NAVIGASI ATAS ================= */
 .page-header {
     width: 90%;
     max-width: 760px;
@@ -69,7 +68,6 @@ a {
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.55);
 }
 
-/* ================= CONTAINER UTAMA ================= */
 .partisi-container {
     width: 90%;
     max-width: 760px;
@@ -79,7 +77,6 @@ a {
     gap: 32px;
 }
 
-/* ================= HERO / HEADER HALAMAN ================= */
 .partisi-hero {
     text-align: center;
     backdrop-filter: blur(14px);
@@ -125,7 +122,6 @@ a {
     text-shadow: 0 0 8px black;
 }
 
-/* ================= DUA PILIHAN MATERI (GRID DALAM ARSIP PARTISI) ================= */
 .materi-choices-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -258,7 +254,7 @@ a {
 }
 
 .materi-card:hover .materi-action {
-    color: #ffffff;
+    color: white;
 }
 
 .materi-watermark {
@@ -275,11 +271,10 @@ a {
 }
 
 .materi-card:hover .materi-watermark {
-    color: rgba(255, 255, 255, 0.12);
+    color: white;
     transform: scale(1.08) translateY(-4px);
 }
 
-/* ================= CONTENT CARD / ARTIKEL DETAIL MATERI ================= */
 .content-card {
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
@@ -407,7 +402,6 @@ a {
     background: rgba(255, 255, 255, 0.05);
 }
 
-/* ================= NAVIGASI ANTAR HALAMAN ================= */
 .page-navigation {
     width: 100%;
     margin-top: 10px;
@@ -458,7 +452,6 @@ a {
     transform: translateX(3px);
 }
 
-/* ================= FOOTER ================= */
 .about-footer {
     text-align: center;
     padding: 25px 20px;
